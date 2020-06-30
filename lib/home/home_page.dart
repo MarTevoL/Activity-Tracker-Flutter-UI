@@ -1,11 +1,46 @@
+import 'package:activity_tracker_ui/home/bottom_bar_item.dart';
 import 'package:activity_tracker_ui/home/line_chart_sample.dart';
-import 'package:activity_tracker_ui/home/week_day_card.dart';
+import 'package:activity_tracker_ui/home/week_day_card_container.dart';
 import 'package:activity_tracker_ui/home/weekly_stat_card.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  List<BottomBarItem> _buildBotomBarItems() {
+    return [
+      BottomBarItem(
+        icon: Icons.menu,
+        color: Colors.grey[600],
+        iconSize: 32.0,
+      ),
+      BottomBarItem(
+        icon: Icons.favorite_border,
+        color: Colors.grey[600],
+        iconSize: 32.0,
+      ),
+      BottomBarItem(
+        icon: Icons.add,
+        color: Colors.grey[600],
+        iconSize: 32.0,
+      ),
+      BottomBarItem(
+        icon: Icons.star_border,
+        color: Colors.grey[600],
+        iconSize: 32.0,
+      ),
+      BottomBarItem(
+        icon: Icons.person_outline,
+        color: Colors.grey[600],
+        iconSize: 32.0,
+      ),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,14 +48,7 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.grey[200],
         color: Colors.white,
         buttonBackgroundColor: Colors.orange,
-        items: [
-          FaIcon(FontAwesomeIcons.trophy),
-          Icon(
-            Icons.add,
-            size: 45.0,
-          ),
-          FaIcon(FontAwesomeIcons.user),
-        ],
+        items: _buildBotomBarItems(),
       ),
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -64,22 +92,7 @@ class HomePage extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(
-                      width: 20.0,
-                    ),
-                    for (var day = 1; day <= 7; day++)
-                      WeekDayCard(
-                        day: '0${day.toString()}',
-                      )
-                  ],
-                ),
-              ),
-            ),
+            WeekDayCardContainer(),
             Container(
               padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
               child: Row(
