@@ -4,6 +4,7 @@ import 'package:activity_tracker_ui/home/week_day_card_container.dart';
 import 'package:activity_tracker_ui/home/weekly_stat_card.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -46,6 +47,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.grey[200],
+        index: 2,
         color: Colors.white,
         buttonBackgroundColor: Colors.orange,
         items: _buildBotomBarItems(),
@@ -75,53 +77,52 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(
-                20.0,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(
+              20.0,
+            ),
+            child: Text(
+              'Your \nActivities',
+              style: TextStyle(
+                fontSize: 46.0,
+                fontWeight: FontWeight.w800,
               ),
-              child: Text(
-                'Your \nActivities',
-                style: TextStyle(
-                  fontSize: 46.0,
-                  fontWeight: FontWeight.w800,
+            ),
+          ),
+          WeekDayCardContainer(),
+          Container(
+            padding: EdgeInsets.fromLTRB(20.0, 18.0, 20.0, 0.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  'TOTAL',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black38,
+                  ),
                 ),
-              ),
-            ),
-            WeekDayCardContainer(),
-            Container(
-              padding: EdgeInsets.fromLTRB(20.0, 20.0, 20.0, 0.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'TOTAL',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black38,
-                    ),
+                Text(
+                  '1500 KCAL',
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black38,
                   ),
-                  Text(
-                    '1500 KCAL',
-                    style: TextStyle(
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black38,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
-            LineChartSample2(),
-            SizedBox(
-              height: 20.0,
-            ),
-            Container(
+          ),
+          LineChartSample2(),
+          SizedBox(
+            height: 20.0,
+          ),
+          Expanded(
+            child: Container(
               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
               decoration: BoxDecoration(
                   color: Colors.grey[200].withOpacity(1),
@@ -172,9 +173,9 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
