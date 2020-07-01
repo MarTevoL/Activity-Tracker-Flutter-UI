@@ -1,10 +1,8 @@
-import 'package:activity_tracker_ui/home/bottom_bar_item.dart';
+import 'package:activity_tracker_ui/home/bottom_curved_navigation_bar.dart';
 import 'package:activity_tracker_ui/home/line_chart_sample.dart';
 import 'package:activity_tracker_ui/home/week_day_card_container.dart';
 import 'package:activity_tracker_ui/home/weekly_stat_card.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,46 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<BottomBarItem> _buildBotomBarItems() {
-    return [
-      BottomBarItem(
-        icon: Icons.menu,
-        color: Colors.grey[600],
-        iconSize: 32.0,
-      ),
-      BottomBarItem(
-        icon: Icons.favorite_border,
-        color: Colors.grey[600],
-        iconSize: 32.0,
-      ),
-      BottomBarItem(
-        icon: Icons.add,
-        color: Colors.grey[600],
-        iconSize: 32.0,
-      ),
-      BottomBarItem(
-        icon: Icons.star_border,
-        color: Colors.grey[600],
-        iconSize: 32.0,
-      ),
-      BottomBarItem(
-        icon: Icons.person_outline,
-        color: Colors.grey[600],
-        iconSize: 32.0,
-      ),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.grey[200],
-        index: 2,
-        color: Colors.white,
-        buttonBackgroundColor: Colors.orange,
-        items: _buildBotomBarItems(),
-      ),
+      bottomNavigationBar: BottomCurvedNavigationBar(),
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
